@@ -1,0 +1,26 @@
+{
+  "name": "print-numbering",
+  "version": "1.0.0",
+  "description": "Print Numbering Script demo from http://www.thorntonsprinters.com/num_gen.php",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OAlm/print_numbering_demo.git"
+  },
+  "keywords": [
+    "print",
+    "numbering"
+  ],
+  "author": "OAlm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OAlm/print_numbering_demo/issues"
+  },
+  "homepage": "https://github.com/OAlm/print_numbering_demo#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
