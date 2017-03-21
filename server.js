@@ -14,14 +14,14 @@ app.get('/', function(req, res) {
 
       const params = '<ul><li>sheets (number, required)</li>'+
                      '<li>ticketsPerSheet (number, required)</li>'+
-                     '<li>prefix (string): <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&prefix=A">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&prefix=A</a></li>'+
-                     '<li>suffix (string)  <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&suffix=B">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&suffix=B</a></li>'+
-                     '<li>startNumber (number) <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&startNumber=5">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&startNumber=5</a></li>'+
-                     '<li>leadingZeros (number) <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&leadingZeros=10">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&leadingZeros=10</a></li>'+
-                     '<li>counterFoil (boolean) <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&counterFoil=true">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&counterFoil=true</a></li>';
+                     '<li>prefix (string): <a href=?sheets=10&ticketsPerSheet=5&prefix=A">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&prefix=A</a></li>'+
+                     '<li>suffix (string)  <a href="?sheets=10&ticketsPerSheet=5&suffix=B">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&suffix=B</a></li>'+
+                     '<li>startNumber (number) <a href="?sheets=10&ticketsPerSheet=5&startNumber=5">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&startNumber=5</a></li>'+
+                     '<li>leadingZeros (number) <a href="?sheets=10&ticketsPerSheet=5&leadingZeros=10">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&leadingZeros=10</a></li>'+
+                     '<li>counterFoil (boolean) <a href="?sheets=10&ticketsPerSheet=5&counterFoil=true">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5&counterFoil=true</a></li>';
 
 
-      res.send('Example: <a href="http://localhost:3000/generate?sheets=10&ticketsPerSheet=5">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5</a><p><b>Parameters</b></p>'+params);
+      res.send('Example: <a href="?sheets=10&ticketsPerSheet=5">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5</a><p><b>Parameters</b></p>'+params);
   } else {
     res.setHeader('content-type', 'text/plain');
     res.send(generateNumbers(parseInt(req.query.sheets),
