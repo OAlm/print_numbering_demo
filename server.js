@@ -1,5 +1,5 @@
 'use strict';
-// Quick hack demonstration on 
+// Quick hack demonstration on
 // Thornton's Printers Numbering Script
 // from http://www.thorntonsprinters.com/num_gen.php
 // @author Alm
@@ -23,11 +23,24 @@ app.get('/', function(req, res) {
 
       res.send('Example: <a href="?sheets=10&ticketsPerSheet=5">http://localhost:3000/generate?sheets=10&ticketsPerSheet=5</a><p><b>Parameters</b></p>'+params);
   } else {
+    let leadingZeros = parseInt(req.query.leadingZeros);
+    if(isNaN(leadingZeros)) {
+      leadingZeros = 0;
+    }
+    let startNumber = parseInt(req.query.startNumber);
+    if(isNaN(startNumber)) {
+      startNumber = 0;
+    }
+
     res.setHeader('content-type', 'text/plain');
-    res.send(generateNumbers(parseInt(req.query.sheets),
+    res.send(generateNumbers(
+         parseInt(req.query.sheets),
          parseInt(req.query.ticketsPerSheet),
-         req.query.prefix, req.query.suffix, req.query.startNumber,
-         req.query.leadingZeros, req.query.counterFoil));
+         req.query.prefix,
+         req.query.suffix,
+         startNumber,
+         leadingZeros,
+         req.query.counterFoil));
   }
 });
 
@@ -37,13 +50,14 @@ app.listen(3000, function() {
 
 const generateNumbers = (sheets, ticketsPerSheet, prefix = '', suffix = '',
     startNumber = 0, leadingZeros = 0, counterFoil = false) => {
-    let result = '';
 
+    let result = '';
+    
     for (let i = 0; i < sheets; i++) {
         for (let j = 0; j < ticketsPerSheet; j++) {
           const number = startNumber+sheets*j+i;
           let zeros = '';
-          if(leadingZeros != 0) {
+          if(leadingZeros-number.toString().length > 0) {
             zeros = '0'.repeat((leadingZeros-number.toString().length));
           }
           const row = prefix+zeros+(startNumber+sheets*j+i)+suffix;
@@ -58,21 +72,22 @@ const generateNumbers = (sheets, ticketsPerSheet, prefix = '', suffix = '',
     return result;
 };
 
+
 /*
-const sheets = 5;
+const sheets = 100;
 const ticketsPerSheet = 10;
 const prefix = '#';
 const suffix = '';
 const startNumber = 5;
-const leadingZeros = 3;
-const counterFoil = true;
+const leadingZeros = 5;
+const counterFoil = false;
 
-generateNumbers(
+console.log(generateNumbers(
     sheets,
     ticketsPerSheet,
     prefix,
     suffix,
     startNumber,
     leadingZeros,
-    counterFoil);
+    counterFoil));
 */
